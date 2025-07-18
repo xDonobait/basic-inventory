@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <link data-default-icon="logo" rel="icon" sizes="192x192" href="logo.png" />
+    <title>Eliminar Producto</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="sideandscroll.css">
+</head>
+
+<body>
+    <div class="delete-container">
+        <img src="logo.png" alt="Advertencia" class="warning-image" />
+        <p class="delete-text">¿Estás seguro de que deseas eliminar este producto?</p>
+        <div class="botones">
+            <button id="confirmDelete" class="eliminar-btn">Eliminar</button>
+            <button onclick="window.location.href='catalog.html'" class="cancelar-btn">Cancelar</button>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const productIndex = urlParams.get("id");
+        const products = JSON.parse(localStorage.getItem("products")) || [];
+
+        document.getElementById("confirmDelete").addEventListener("click", function () {
+            products.splice(productIndex, 1);
+            localStorage.setItem("products", JSON.stringify(products));
+
+            alert("Producto eliminado exitosamente!");
+            window.location.href = "catalog.html";
+        });
+    </script>
+
+    <script src="sidebar.js"></script>
+</body>
+
+</html>

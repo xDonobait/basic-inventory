@@ -1,0 +1,338 @@
+/*TIPOGRAFIA - API GOOGLE FONTS*/
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Outfit:wght@100..900&display=swap");
+
+/*BODY*/
+body {
+  background-image: url("image.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(19, 19, 19, 0.9);
+  color: #fff;
+  font-family: "Outfit", sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/*CONTENIDO MAIN*/
+.main-section {
+  text-align: center;
+  padding: 20px 20px;
+}
+
+.main-image img {
+  width: 500px;
+  height: 500px;
+  margin-bottom: 20px;
+}
+
+/*ESTILO SEPARACION*/
+.main-section {
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transition: opacity 0.5s ease;
+}
+
+/*BOTONES-MENÚ*/
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.buttons div {
+  color: #fff;
+  background-color: #00000055;
+  padding: 15px 30px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.buttons a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.buttons div:hover {
+  background-color: rgba(255, 255, 255, 0.373);
+  color: black;
+}
+
+/*AGREGAR PRODUCTOS*/
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: rgba(19, 19, 19, 0.9); /* Fondo oscuro semi-transparente */
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 15px;
+}
+
+label {
+  font-size: 1.1rem;
+  color: #ccc;
+  text-align: left;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: none; /* Para que el usuario no pueda cambiar el tamaño */
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  outline: none;
+  background-color: #444;
+}
+
+button[type="submit"] {
+  background-color: #00000055;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: rgba(255, 255, 255, 0.373);
+  color: black;
+}
+
+/*EDITAR PRODUCTOS*/
+.edit-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: rgba(19, 19, 19, 0.9); /* Fondo oscuro semi-transparente */
+}
+
+.edit-form-container h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.edit-form-container form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 15px;
+}
+
+.edit-form-container label {
+  font-size: 1.1rem;
+  color: #ccc;
+  text-align: left;
+}
+
+.edit-form-container input[type="text"],
+.edit-form-container input[type="number"],
+.edit-form-container textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.edit-form-container button[type="submit"] {
+  background-color: #00000055;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-form-container button[type="submit"]:hover {
+  background-color: rgba(255, 255, 255, 0.373);
+  color: black;
+}
+
+.catalog-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: #444;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.catalog-button:hover {
+  background-color: #666;
+}
+
+/* CATALOGO - ESTILOS PARA MOSTRAR PRODUCTOS */
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* 4 columnas para centrar los productos */
+  gap: 20px; /* Espacio entre productos */
+  padding: 30px;
+  justify-items: center; /* Centrar cada producto en su columna */
+}
+
+.product {
+  background-color: rgba(19, 19, 19, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 250px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  color: #fff;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product h3 {
+  margin-bottom: 10px;
+}
+
+.botones {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.editar,
+.eliminar {
+  padding: 8px 12px;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.editar {
+  background-color: #555;
+  color: white;
+}
+
+.editar:hover {
+  background-color: #777;
+}
+
+.eliminar {
+  background-color: #d32f2f; /* Rojo tenue para "eliminar" */
+  color: white;
+}
+
+.eliminar:hover {
+  background-color: #b71c1c;
+}
+
+/*ELIMINAR PRODUCTO*/
+.delete-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+  max-width: 400px;
+  margin: auto;
+  color: #fff;
+  text-align: center;
+}
+
+.warning-image {
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
+.delete-text {
+  font-size: 1.5rem; /* Tamaño más grande */
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.botones {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.eliminar-btn,
+.cancelar-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.eliminar-btn {
+  background-color: #d32f2f;
+  color: #fff;
+}
+
+.eliminar-btn:hover {
+  background-color: #b71c1c;
+}
+
+.cancelar-btn {
+  background-color: #555;
+  color: #fff;
+}
+
+.cancelar-btn:hover {
+  background-color: #777;
+}

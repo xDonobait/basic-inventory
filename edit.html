@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <link data-default-icon="Logo" rel="icon" sizes="192x192" href="logo.png" />
+    <title>Editar Producto</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="sideandscroll.css">
+</head>
+
+<body>
+    <!--SIDEBAR-BUTTON-->
+    <img id="openSidebarBtn" src="logo.png" alt="Menu Icon" class="menu-icon" />
+
+    <!--SIDEBAR-->
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" id="closeSidebarBtn">&times;</a>
+        <a href="index.html">Inicio</a>
+        <a href="catalog.html">Catálogo</a>
+        <a href="add.html">Agregar Producto</a>
+    </div>
+
+    <div class="edit-form-container">
+        <h2>Editar Producto</h2>
+        <form id="editForm">
+            <label for="productID">ID del Producto:</label>
+            <input type="text" id="productID" name="productID" required />
+
+            <label for="productName">Nombre:</label>
+            <input type="text" id="productName" name="productName" required />
+
+            <label for="productBrand">Marca:</label>
+            <input type="text" id="productBrand" name="productBrand" required />
+
+            <label for="productDescription">Descripción:</label>
+            <textarea id="productDescription" name="productDescription" rows="4" required></textarea>
+
+            <label for="productQuantity">Cantidad:</label>
+            <input type="number" id="productQuantity" name="productQuantity" required />
+
+            <label for="productPrice">Precio:</label>
+            <input type="number" id="productPrice" name="productPrice" step="0.01" required />
+
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const productIndex = urlParams.get("id");
+        const products = JSON.parse(localStorage.getItem("products")) || [];
+        const product = products[productIndex];
+
+        // Asignar valores del producto al formulario
+        document.getElementById("productID").value = product.id;
+        document.getElementById("productName").value = product.name;
+        document.getElementById("productBrand").value = product.brand;
+        document.getElementById("productDescription").value = product.description;
+        document.getElementById("productQuantity").value = product.quantity;
+        document.getElementById("productPrice").value = product.price;
+
+        // Manejar el evento de actualización del producto
+        document.getElementById("editForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Actualizar el producto con los nuevos valores del formulario
+            product.name = document.getElementById("productName").value;
+            product.brand = document.getElementById("productBrand").value;
+            product.description = document.getElementById("productDescription").value;
+            product.quantity = parseInt(document.getElementById("productQuantity").value);
+            product.price = parseFloat(document.getElementById("productPrice").value);
+
+            // Guardar los productos actualizados en localStorage
+            products[productIndex] = product;
+            localStorage.setItem("products", JSON.stringify(products));
+
+            alert("Producto actualizado exitosamente!");
+            window.location.href = "catalog.html"; // Redirigir al catálogo
+        });
+    </script>
+
+    <script src="sidebar.js"></script>
+</body>
+
+</html>

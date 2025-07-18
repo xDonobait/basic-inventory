@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <link data-default-icon="Logo" rel="icon" sizes="192x192" href="logo.png" />
+    <title>Catalogo</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="sideandscroll.css">
+</head>
+
+<body>
+    <!--SIDEBAR-BUTTON-->
+    <img id="openSidebarBtn" src="logo.png" alt="Menu Icon" class="menu-icon" />
+
+    <!--SIDEBAR-->
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" id="closeSidebarBtn">&times;</a>
+        <a href="index.html">Inicio</a>
+        <a href="catalog.html">Catálogo</a>
+        <a href="add.html">Agregar Producto</a>
+    </div>
+
+    <h2>Catálogo de Productos</h2>
+    <div id="catalog" class="catalogo"></div>
+
+    <script>
+        function loadCatalog() {
+            const catalog = document.getElementById("catalog");
+            const products = JSON.parse(localStorage.getItem("products")) || [];
+
+            products.forEach((product, index) => {
+                const productDiv = document.createElement("div");
+                productDiv.className = "product";
+
+                productDiv.innerHTML = `
+                    <h3>${product.name}</h3>
+                    <p><strong>ID:</strong> ${product.id}</p>
+                    <p><strong>Marca:</strong> ${product.brand}</p>
+                    <p><strong>Descripción:</strong> ${product.description}</p>
+                    <p><strong>Cantidad:</strong> ${product.quantity}</p>
+                    <p><strong>Precio:</strong> $${product.price.toFixed(2)}</p>
+                <div class="botones">
+                    <a href="edit.html?id=${index}" class="editar">Editar</a>
+                    <a href="delete.html?id=${index}" class="eliminar">Eliminar</a>
+                </div>
+                `;
+
+                catalog.appendChild(productDiv);
+            });
+        }
+
+        loadCatalog();
+    </script>
+
+    <script src="sidebar.js"></script>
+
+</body>
+
+</html>

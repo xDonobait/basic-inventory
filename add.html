@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <link data-default-icon="Logo" rel="icon" sizes="192x192" href="logo.png" />
+    <title>Agregar Productos</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="sideandscroll.css">
+</head>
+
+<body>
+    <!--SIDEBAR-BUTTON-->
+    <img id="openSidebarBtn" src="logo.png" alt="Menu Icon" class="menu-icon" />
+
+    <a href="catalog.html" class="catalog-button">Ir al Catálogo</a>
+
+    <!--SIDEBAR-->
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" id="closeSidebarBtn">&times;</a>
+        <a href="index.html">Inicio</a>
+        <a href="catalog.html">Catálogo</a>
+        <a href="add.html">Agregar Producto</a>
+    </div>
+
+    <!-- FORMULARIO DE AGREGAR PRODUCTO -->
+    <div class="form-container">
+        <h2>Agregar Producto</h2>
+        <form action="process_add_product.php" method="post">
+            <label for="productID">ID del Producto:</label>
+            <input type="text" id="productID" name="productID" required />
+
+            <label for="productName">Nombre:</label>
+            <input type="text" id="productName" name="productName" required />
+
+            <label for="brand">Marca:</label>
+            <input type="text" id="brand" name="brand" required />
+
+            <label for="description">Descripción:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <label for="quantity">Cantidad:</label>
+            <input type="number" id="quantity" name="quantity" min="1" required />
+
+            <label for="price">Precio:</label>
+            <input type="number" id="price" name="price" step="0.01" min="0" required />
+
+            <button type="submit">Agregar Producto</button>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Obtener los valores del formulario
+            const product = {
+                id: document.getElementById("productID").value,
+                name: document.getElementById("productName").value,
+                brand: document.getElementById("brand").value,
+                description: document.getElementById("description").value,
+                quantity: parseInt(document.getElementById("quantity").value),
+                price: parseFloat(document.getElementById("price").value)
+            };
+
+            // Obtener productos desde localStorage o inicializar como array vacío
+            let products = JSON.parse(localStorage.getItem("products")) || [];
+
+            // Añadir el nuevo producto
+            products.push(product);
+
+            // Guardar en localStorage
+            localStorage.setItem("products", JSON.stringify(products));
+
+            alert("Producto agregado exitosamente!");
+
+            // Limpiar el formulario
+            this.reset();
+        });
+    </script>
+
+    <script src="sidebar.js"></script>
+</body>
+
+</html>
